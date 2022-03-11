@@ -33,12 +33,7 @@ from .dataloaders import (
     VoucherChannelListingByVoucherIdAndChanneSlugLoader,
     VoucherChannelListingByVoucherIdLoader,
 )
-from .enums import (
-    DiscountValueTypeEnum,
-    OrderDiscountTypeEnum,
-    SaleType,
-    VoucherTypeEnum,
-)
+from .enums import DiscountTypeEnum, DiscountValueTypeEnum, SaleType, VoucherTypeEnum
 
 
 class SaleChannelListing(ModelObjectType):
@@ -346,7 +341,7 @@ class VoucherCountableConnection(CountableConnection):
 
 class BaseObjectDiscount(graphene.Interface):
     id = graphene.GlobalID(required=True)
-    type = OrderDiscountTypeEnum(required=True)
+    type = DiscountTypeEnum(required=True)
     name = graphene.String()
     translated_name = graphene.String()
     value_type = graphene.Field(
